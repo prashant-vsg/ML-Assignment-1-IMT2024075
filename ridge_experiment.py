@@ -46,11 +46,6 @@ for alpha in alphas:
 
     print(f"Alpha = {alpha:<10} MSE = {mse:.6f}")
 
-
-# =====================================
-# JOINT RIDGE DEGREE + ALPHA SEARCH
-# =====================================
-
 results = []
 
 alphas = [0.001, 0.01, 0.1, 1, 3, 10, 30, 100, 300]
@@ -91,11 +86,6 @@ print(results_df.head(10).to_string(index=False))
 
 results_df.to_csv("var1_ridge_comparison.csv", index=False)
 
-
-# =====================================
-# FINE-TUNE ALPHA FOR DEGREE 5
-# =====================================
-
 print("\nFINE-TUNING RIDGE — VAR1")
 
 fine_alphas = [4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 20, 25]
@@ -124,11 +114,6 @@ for alpha in fine_alphas:
 fine_df = pd.DataFrame(fine_results).sort_values("MSE")
 
 print(fine_df.to_string(index=False))
-
-
-# =====================================
-# RIDGE FEATURE SELECTION — VAR1
-# =====================================
 
 from itertools import combinations
 
