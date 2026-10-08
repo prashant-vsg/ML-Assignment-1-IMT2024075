@@ -4,20 +4,18 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.pipeline import make_pipeline
 
-# STEP 1: Load the dataset
 train_var1 = pd.read_csv("IMT2024075_train_var1.csv")
 
-# STEP 2: Separate inputs and target
 X1 = train_var1.drop(columns=["y"])
 y1 = train_var1["y"]
 
 print("Dataset shape:", train_var1.shape)
 print("Features:", list(X1.columns))
 
-# STEP 3: Set up 5-fold cross-validation
+#Set up 5-fold cross-validation
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 
-# STEP 4: Evaluate degrees 1 through 10
+#Evaluate degrees 1 through 10
 print("\nPOLYNOMIAL DEGREE COMPARISON")
 
 for degree in range(1, 11):
@@ -81,10 +79,6 @@ results_df = results_df.sort_values("MSE")
 
 print(results_df.head(10).to_string(index=False))
 
-# ==========================================
-# VAR2 — POLYNOMIAL DEGREE SELECTION
-# ==========================================
-
 train_var2 = pd.read_csv("IMT2024075_train_var2.csv")
 
 X2 = train_var2.drop(columns=["y"])
@@ -124,10 +118,6 @@ for degree in range(1, 21):
         f"Mean MSE = {mse_scores.mean():.4f}, "
         f"Mean R2 = {r2_scores.mean():.4f}"
     )
-
-    # ==========================================
-# VAR2 — FEATURE SELECTION
-# ==========================================
 
 print("\nFEATURE SELECTION — VAR2")
 
@@ -171,10 +161,6 @@ results2_df = results2_df.sort_values("MSE")
 
 print(results2_df.to_string(index=False))
 
-# ==========================================
-# VAR2 — JOINT DEGREE + FEATURE SELECTION
-# ==========================================
-
 print("\nJOINT MODEL SELECTION — VAR2")
 
 joint_results2 = []
@@ -217,10 +203,6 @@ print("\nTOP 10 VAR2 MODELS")
 print(joint_df2.head(10).to_string(index=False))
 
 joint_df2.to_csv("var2_model_comparison.csv", index=False)
-
-# ==========================================
-# VAR1 — JOINT DEGREE + FEATURE SELECTION
-# ==========================================
 
 print("\nJOINT MODEL SELECTION — VAR1")
 
