@@ -12,10 +12,10 @@ y1 = train_var1["y"]
 print("Dataset shape:", train_var1.shape)
 print("Features:", list(X1.columns))
 
-#Set up 5-fold cross-validation
+# Set up 5-fold cross-validation
 kf = KFold(n_splits=5, shuffle=True, random_state=42)
 
-#Evaluate degrees 1 through 10
+# Evaluate degrees 1 through 10
 print("\nPOLYNOMIAL DEGREE COMPARISON")
 
 for degree in range(1, 11):
