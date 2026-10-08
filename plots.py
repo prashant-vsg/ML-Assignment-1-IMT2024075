@@ -2,7 +2,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Use the saved results from our joint searches
 var1 = pd.read_csv("var1_model_comparison.csv")
 var2 = pd.read_csv("var2_model_comparison.csv")
 
