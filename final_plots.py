@@ -2,7 +2,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Previously saved OLS and Ridge experiment results
 ols1 = pd.read_csv("var1_model_comparison.csv")
 ols2 = pd.read_csv("var2_model_comparison.csv")
 
