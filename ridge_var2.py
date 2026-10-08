@@ -50,11 +50,6 @@ for alpha in alphas:
 
     print(f"Alpha = {alpha:<10} MSE = {mse:.6f}")
 
-    
-# =====================================
-# VAR2 — JOINT RIDGE DEGREE + ALPHA
-# =====================================
-
 results = []
 
 alphas = [
@@ -97,10 +92,6 @@ print(results_df.head(10).to_string(index=False))
 results_df.to_csv("var2_ridge_comparison.csv", index=False)
 
 
-# =====================================
-# VAR2 — RIDGE FINE-TUNING
-# =====================================
-
 print("\nFINE-TUNING RIDGE — VAR2")
 
 fine_results = []
@@ -134,11 +125,6 @@ for degree in degrees:
 fine_df = pd.DataFrame(fine_results).sort_values("MSE")
 
 print(fine_df.head(15).to_string(index=False))
-
-
-# =====================================
-# VAR2 — RIDGE FEATURE SELECTION
-# =====================================
 
 from itertools import combinations
 
