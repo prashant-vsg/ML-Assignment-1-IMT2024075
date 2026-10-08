@@ -1,5 +1,5 @@
 
-# ML Assignment 1 — Polynomial Regression
+# Polynomial Regression
 
 **Roll Number:** IMT2024075
 
