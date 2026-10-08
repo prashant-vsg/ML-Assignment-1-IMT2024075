@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 
 var1 = pd.read_csv("var1_model_comparison.csv")
 var2 = pd.read_csv("var2_model_comparison.csv")
-
-# For each degree, find the best feature subset
 var1_best = var1.groupby("Degree")["MSE"].min().sort_index()
 var2_best = var2.groupby("Degree")["MSE"].min().sort_index()
 
