@@ -6,10 +6,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import Ridge
 
-# ======================================
-# VAR1 — FINAL RIDGE MODEL
-# ======================================
-
 train1 = pd.read_csv("IMT2024075_train_var1.csv")
 test1 = pd.read_csv("IMT2024075_test_var1.csv")
 
@@ -30,10 +26,6 @@ pd.DataFrame({"y": pred1}).to_csv(
     index=False
 )
 
-# ======================================
-# VAR2 — FINAL RIDGE MODEL
-# ======================================
-
 train2 = pd.read_csv("IMT2024075_train_var2.csv")
 test2 = pd.read_csv("IMT2024075_test_var2.csv")
 
@@ -53,10 +45,6 @@ pd.DataFrame({"y": pred2}).to_csv(
     "IMT2024075_pred_var2.csv",
     index=False
 )
-
-# ======================================
-# VERIFY PREDICTIONS
-# ======================================
 
 for filename in [
     "IMT2024075_pred_var1.csv",
