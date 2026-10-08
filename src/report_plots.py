@@ -1,3 +1,6 @@
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -12,14 +15,14 @@ kf = KFold(n_splits=5, shuffle=True, random_state=42)
 experiments = [
     {
         "name": "var1",
-        "file": "IMT2024075_train_var1.csv",
+        "file": (PROJECT_ROOT / "data/IMT2024075_train_var1.csv"),
         "degrees": range(1, 8),
         "ridge_alpha": 15,
         "final_degree": 5
     },
     {
         "name": "var2",
-        "file": "IMT2024075_train_var2.csv",
+        "file": (PROJECT_ROOT / "data/IMT2024075_train_var2.csv"),
         "degrees": range(5, 14),
         "ridge_alpha": 0.6,
         "final_degree": 10
@@ -91,7 +94,7 @@ for exp in experiments:
     plt.tight_layout()
 
     plt.savefig(
-        f"{exp['name']}_report_plot.png",
+        PROJECT_ROOT / "figures" / f"{exp['name']}_report_plot.png",
         dpi=300
     )
 

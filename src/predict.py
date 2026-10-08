@@ -1,3 +1,6 @@
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 import pandas as pd
 import numpy as np
@@ -6,8 +9,12 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import PolynomialFeatures, StandardScaler
 from sklearn.linear_model import Ridge
 
-train1 = pd.read_csv("IMT2024075_train_var1.csv")
-test1 = pd.read_csv("IMT2024075_test_var1.csv")
+# ======================================
+# VAR1 — FINAL RIDGE MODEL
+# ======================================
+
+train1 = pd.read_csv((PROJECT_ROOT / "data/IMT2024075_train_var1.csv"))
+test1 = pd.read_csv((PROJECT_ROOT / "data/IMT2024075_test_var1.csv"))
 
 features1 = ["x1", "x2", "x3", "x4", "x5", "x6"]
 
@@ -22,12 +29,16 @@ model1.fit(train1[features1], train1["y"])
 pred1 = model1.predict(test1[features1])
 
 pd.DataFrame({"y": pred1}).to_csv(
-    "IMT2024075_pred_var1.csv",
+    (PROJECT_ROOT / "predictions/IMT2024075_pred_var1.csv"),
     index=False
 )
 
-train2 = pd.read_csv("IMT2024075_train_var2.csv")
-test2 = pd.read_csv("IMT2024075_test_var2.csv")
+# ======================================
+# VAR2 — FINAL RIDGE MODEL
+# ======================================
+
+train2 = pd.read_csv((PROJECT_ROOT / "data/IMT2024075_train_var2.csv"))
+test2 = pd.read_csv((PROJECT_ROOT / "data/IMT2024075_test_var2.csv"))
 
 features2 = ["x1", "x2", "x3"]
 
@@ -42,13 +53,17 @@ model2.fit(train2[features2], train2["y"])
 pred2 = model2.predict(test2[features2])
 
 pd.DataFrame({"y": pred2}).to_csv(
-    "IMT2024075_pred_var2.csv",
+    (PROJECT_ROOT / "predictions/IMT2024075_pred_var2.csv"),
     index=False
 )
 
+# ======================================
+# VERIFY PREDICTIONS
+# ======================================
+
 for filename in [
-    "IMT2024075_pred_var1.csv",
-    "IMT2024075_pred_var2.csv"
+    (PROJECT_ROOT / "predictions/IMT2024075_pred_var1.csv"),
+    (PROJECT_ROOT / "predictions/IMT2024075_pred_var2.csv")
 ]:
     df = pd.read_csv(filename)
 

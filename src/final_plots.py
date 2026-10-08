@@ -1,12 +1,16 @@
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
-ols1 = pd.read_csv("var1_model_comparison.csv")
-ols2 = pd.read_csv("var2_model_comparison.csv")
+# Previously saved OLS and Ridge experiment results
+ols1 = pd.read_csv((PROJECT_ROOT / "results/var1_model_comparison.csv"))
+ols2 = pd.read_csv((PROJECT_ROOT / "results/var2_model_comparison.csv"))
 
-ridge1 = pd.read_csv("var1_ridge_comparison.csv")
-ridge2 = pd.read_csv("var2_ridge_comparison.csv")
+ridge1 = pd.read_csv((PROJECT_ROOT / "results/var1_ridge_comparison.csv"))
+ridge2 = pd.read_csv((PROJECT_ROOT / "results/var2_ridge_comparison.csv"))
 
 # Lowest MSE among feature subsets for each OLS degree
 ols1_mse = ols1.groupby("Degree")["MSE"].min()
@@ -34,7 +38,7 @@ for name, ols, ridge, max_degree in [
     plt.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(f"{name}_final_comparison.png", dpi=300)
+    plt.savefig(PROJECT_ROOT / "figures" / f"{name}_final_comparison.png", dpi=300)
     plt.close()
 
     print(f"{name}_final_comparison.png saved")

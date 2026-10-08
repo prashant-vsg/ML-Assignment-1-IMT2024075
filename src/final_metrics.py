@@ -1,3 +1,6 @@
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 import pandas as pd
 import numpy as np
@@ -8,8 +11,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import KFold, cross_validate
 
 configs = [
-    ("Var1", "IMT2024075_train_var1.csv", 5, 15),
-    ("Var2", "IMT2024075_train_var2.csv", 10, 0.6)
+    ("Var1", (PROJECT_ROOT / "data/IMT2024075_train_var1.csv"), 5, 15),
+    ("Var2", (PROJECT_ROOT / "data/IMT2024075_train_var2.csv"), 10, 0.6)
 ]
 
 for name, filename, degree, alpha in configs:

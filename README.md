@@ -1,18 +1,18 @@
 
-# Polynomial Regression
+# ML Assignment 1 — Polynomial Regression
 
 **Roll Number:** IMT2024075
 
 ## Overview
 
-Polynomial regression models were developed for two datasets:
+This project implements polynomial regression for two datasets:
 
 - **Var1:** Steam Turbine Optimization
 - **Var2:** Subterranean Thermal Reservoir Mapping
 
-Ordinary Least Squares (OLS) and Ridge regression were compared using 5-fold cross-validation. Polynomial degrees, feature subsets, and regularization strengths were tested to select the final models.
+Ordinary Least Squares (OLS) and Ridge regression were compared using polynomial degree selection, feature subset experiments, and 5-fold cross-validation.
 
-## Final Results
+## Final Models and Results
 
 | Parameter | Var1 | Var2 |
 |---|---|---|
@@ -23,7 +23,18 @@ Ordinary Least Squares (OLS) and Ridge regression were compared using 5-fold cro
 | Mean CV MSE | 0.523408 | 0.236946 |
 | Mean CV R² | 0.947907 | 0.995131 |
 
-*Metrics are averaged across 5-fold CV runs with random seeds 7, 21, and 123.*
+*The reported metrics are averages of 5-fold cross-validation results using random seeds 7, 21, and 123.*
+
+## Repository Structure
+
+| Folder | Contents |
+|---|---|
+| `src/` | Training, evaluation, prediction, and plotting scripts |
+| `data/` | Training datasets, test datasets, and sample submission |
+| `predictions/` | Final prediction CSV files |
+| `results/` | Model comparison results |
+| `figures/` | Generated graphs and visualizations |
+| `reports/` | Assignment question paper and final report |
 
 ## Requirements
 
@@ -33,7 +44,7 @@ Ordinary Least Squares (OLS) and Ridge regression were compared using 5-fold cro
 - Scikit-learn
 - Matplotlib
 
-Install dependencies:
+Install dependencies from the project root:
 
 ```bash
 python -m pip install numpy pandas scikit-learn matplotlib
@@ -41,19 +52,24 @@ python -m pip install numpy pandas scikit-learn matplotlib
 
 ## Running the Code
 
-Run the final prediction script:
+Run the following commands from the repository's root directory.
+
+Generate final predictions:
 
 ```bash
-python predict.py
+python src/predict.py
 ```
 
-This generates:
+Reproduce the final validation metrics:
 
-- `IMT2024075_pred_var1.csv`
-- `IMT2024075_pred_var2.csv`
+```bash
+python src/final_metrics.py
+```
 
-Other scripts contain the polynomial degree comparisons, feature selection, Ridge experiments, cross-validation, and plotting code.
+The generated prediction files are saved in `predictions/`.
 
-## Report
+## Submission
 
-The assignment report is available in `IMT2024075.pdf`.
+- **Report:** `reports/IMT2024075.pdf`
+- **Var1 predictions:** `predictions/IMT2024075_pred_var1.csv`
+- **Var2 predictions:** `predictions/IMT2024075_pred_var2.csv`

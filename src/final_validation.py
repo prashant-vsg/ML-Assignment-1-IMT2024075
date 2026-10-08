@@ -1,3 +1,6 @@
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 import pandas as pd
 import numpy as np
@@ -8,8 +11,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.model_selection import KFold, cross_val_score
 
 # Load datasets
-train1 = pd.read_csv("IMT2024075_train_var1.csv")
-train2 = pd.read_csv("IMT2024075_train_var2.csv")
+train1 = pd.read_csv((PROJECT_ROOT / "data/IMT2024075_train_var1.csv"))
+train2 = pd.read_csv((PROJECT_ROOT / "data/IMT2024075_train_var2.csv"))
 
 X1, y1 = train1.drop(columns="y"), train1["y"]
 X2, y2 = train2.drop(columns="y"), train2["y"]

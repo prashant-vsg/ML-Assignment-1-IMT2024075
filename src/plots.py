@@ -1,9 +1,15 @@
+from pathlib import Path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
-var1 = pd.read_csv("var1_model_comparison.csv")
-var2 = pd.read_csv("var2_model_comparison.csv")
+# Use the saved results from our joint searches
+var1 = pd.read_csv((PROJECT_ROOT / "results/var1_model_comparison.csv"))
+var2 = pd.read_csv((PROJECT_ROOT / "results/var2_model_comparison.csv"))
+
+# For each degree, find the best feature subset
 var1_best = var1.groupby("Degree")["MSE"].min().sort_index()
 var2_best = var2.groupby("Degree")["MSE"].min().sort_index()
 
@@ -17,7 +23,7 @@ plt.title("Var1: Polynomial Degree vs Validation MSE")
 plt.xticks(range(1, 11))
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig("var1_degree_comparison.png", dpi=300)
+plt.savefig((PROJECT_ROOT / "figures/var1_degree_comparison.png"), dpi=300)
 plt.close()
 
 # Plot Var2
@@ -30,7 +36,7 @@ plt.title("Var2: Polynomial Degree vs Validation MSE")
 plt.xticks(range(1, 21))
 plt.grid(True, alpha=0.3)
 plt.tight_layout()
-plt.savefig("var2_degree_comparison.png", dpi=300)
+plt.savefig((PROJECT_ROOT / "figures/var2_degree_comparison.png"), dpi=300)
 plt.close()
 
 print("Both graphs saved successfully.")
